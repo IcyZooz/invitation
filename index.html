@@ -173,7 +173,7 @@ textarea.minput{resize:none;direction:rtl;font-family:'Tajawal',sans-serif;font-
         <div class="photo-name-ar">محمد</div>
         <div class="photo-name-en">Mohamed</div>
         <div class="photo-frame">
-          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&q=80" alt="Groom">
+          <img src="https://IcyZooz.github.io/invitation/groom.jpg" alt="Groom">
         </div>
       </div>
       <div class="rings-mid">
@@ -186,7 +186,7 @@ textarea.minput{resize:none;direction:rtl;font-family:'Tajawal',sans-serif;font-
         <div class="photo-name-ar">تقى</div>
         <div class="photo-name-en">Toka</div>
         <div class="photo-frame">
-          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&q=80" alt="Bride">
+          <img src="https://IcyZooz.github.io/invitation/bride.jpg" alt="Bride">
         </div>
       </div>
     </div>
@@ -341,13 +341,13 @@ textarea.minput{resize:none;direction:rtl;font-family:'Tajawal',sans-serif;font-
 
 <script>
 (function(){
-  var colors=['#e8c9a0','#f5ddd0','#f9f0e6','#ecdcc4','#fbeee0'];
+  var colors=['#e8c9a0','#f5ddd0','#f9f0e6','#ecdcc4','#fbeee0','#faf7f2','#f8f4ee','#fffdf9','#f5f0e8','#fdf9f3'];
   var layer=document.getElementById('petalsLayer');
-  for(var i=0;i<22;i++){
+  for(var i=0;i<36;i++){
     var p=document.createElement('div');
     p.className='petal';
-    var s=Math.random()*10+5;
-    p.style.cssText='width:'+s+'px;height:'+s+'px;left:'+Math.random()*100+'%;background:'+colors[Math.floor(Math.random()*colors.length)]+';animation-duration:'+(Math.random()*12+8)+'s;animation-delay:'+(Math.random()*12)+'s;border-radius:'+(Math.random()>0.5?'50% 0 50% 0':'0 50% 0 50%')+';';
+    var s=Math.random()*12+5;
+    p.style.cssText='width:'+s+'px;height:'+s+'px;left:'+Math.random()*100+'%;background:'+colors[Math.floor(Math.random()*colors.length)]+';animation-duration:'+(Math.random()*14+8)+'s;animation-delay:'+(Math.random()*14)+'s;border-radius:'+(Math.random()>0.5?'50% 0 50% 0':'0 50% 0 50%')+';';
     layer.appendChild(p);
   }
 })();
@@ -355,6 +355,7 @@ textarea.minput{resize:none;direction:rtl;font-family:'Tajawal',sans-serif;font-
 function openInvitation(){
   document.getElementById('coverScreen').classList.add('hidden');
   document.getElementById('invMain').classList.add('visible');
+  window.scrollTo(0,0);
   var iframe=document.createElement('iframe');
   iframe.style.cssText='position:fixed;bottom:-9999px;left:-9999px;width:1px;height:1px;border:none;pointer-events:none;';
   iframe.src='https://www.youtube.com/embed/uhpdwhNDTjk?autoplay=1&loop=1&playlist=uhpdwhNDTjk&controls=0&mute=0';
