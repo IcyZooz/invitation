@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohamed & Toka - Engagement Invitation</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Tajawal:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:#fdf6ee;font-family:'Cormorant Garamond',serif;color:#3a2e1e;overflow-x:hidden;}
+
+.petals-layer{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;overflow:hidden;}
+.petal{position:absolute;top:-40px;opacity:0;animation:fallPetal linear infinite;}
+@keyframes fallPetal{0%{transform:translateY(-40px) rotate(0deg);opacity:0;}10%{opacity:0.3;}90%{opacity:0.15;}100%{transform:translateY(110vh) rotate(380deg);opacity:0;}}
+
+.cover-screen{position:fixed;top:0;left:0;width:100%;height:100%;background:#fdf6ee;z-index:500;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 32px;cursor:pointer;transition:opacity 0.9s ease;}
+.cover-screen.hidden{opacity:0;pointer-events:none;}
+.cover-rings{margin-bottom:28px;}
+.cover-received-ar{font-family:'Tajawal',sans-serif;font-size:22px;font-weight:300;color:#7a5535;line-height:1.8;animation:fadeUp 1s 0.2s ease both;}
+.cover-received-en{font-size:17px;font-style:italic;color:#9a7550;margin-top:4px;animation:fadeUp 1s 0.4s ease both;}
+.cover-from-ar{font-family:'Tajawal',sans-serif;font-size:30px;font-weight:400;color:#3a2e1e;margin-top:18px;animation:fadeUp 1s 0.6s ease both;}
+.cover-from-en{font-size:26px;font-style:italic;font-weight:300;color:#3a2e1e;margin-top:4px;animation:fadeUp 1s 0.8s ease both;}
+.cover-amp{color:#c9a227;}
+.cover-ornament{color:#c9a227;font-size:13px;letter-spacing:8px;margin-top:16px;opacity:0.5;animation:fadeUp 1s 1s ease both;}
+.cover-tap{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#c9a227;margin-top:28px;animation:pulse 2s 1.5s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:0.3;}50%{opacity:0.9;}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+
+.inv{max-width:520px;margin:0 auto;background:#fdf6ee;opacity:0;transition:opacity 0.9s ease;}
+.inv.visible{opacity:1;}
+
+.hero{text-align:center;padding:60px 32px 44px;border-bottom:1px solid #ecdcc4;}
+.hero-bismillah{font-family:'Tajawal',sans-serif;font-size:21px;color:#b08d2a;margin-bottom:22px;letter-spacing:1px;}
+.hero-sublabel-ar{font-family:'Tajawal',sans-serif;font-size:18px;color:#b08d2a;margin-bottom:6px;letter-spacing:1px;}
+.hero-sublabel-en{font-size:13px;letter-spacing:4px;text-transform:uppercase;color:#b08d2a;margin-bottom:18px;opacity:0.8;}
+.hero-names-ar{font-family:'Tajawal',sans-serif;font-size:30px;font-weight:300;color:#b08d2a;margin-bottom:6px;}
+.hero-names-en{font-size:56px;font-style:italic;font-weight:300;color:#2c2010;line-height:1.1;}
+.hero-amp{color:#c9a227;}
+.hero-ornament{color:#c9a227;font-size:12px;letter-spacing:8px;margin-top:18px;display:block;opacity:0.5;}
+
+.gold-line{display:flex;align-items:center;gap:12px;justify-content:center;margin:16px 0;}
+.gold-bar{width:60px;height:1px;background:#c9a227;opacity:0.4;}
+.gold-diamond{width:6px;height:6px;background:#c9a227;transform:rotate(45deg);flex-shrink:0;opacity:0.7;}
+
+.section{padding:52px 32px;border-bottom:1px solid #ecdcc4;text-align:center;}
+.sec-tag-ar{font-family:'Tajawal',sans-serif;font-size:14px;letter-spacing:1px;color:#c9a227;margin-bottom:4px;}
+.sec-tag-en{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#c9a227;margin-bottom:14px;opacity:0.7;}
+
+.intro-h-ar{font-family:'Tajawal',sans-serif;font-size:28px;font-weight:400;color:#3a2e1e;margin-bottom:4px;}
+.intro-h-en{font-size:22px;font-style:italic;font-weight:300;color:#7a5535;margin-bottom:26px;}
+
+.photos-row{display:flex;gap:16px;justify-content:center;margin:16px 0;direction:ltr;}
+.photo-card{flex:1;max-width:165px;text-align:center;}
+.photo-name-ar{font-family:'Tajawal',sans-serif;font-size:17px;color:#b08d2a;margin-bottom:5px;}
+.photo-name-en{font-size:15px;font-style:italic;color:#7a5535;margin-bottom:7px;}
+.photo-frame{width:100%;aspect-ratio:3/4;border:1px solid #e8c9a0;overflow:hidden;background:#f5e8d8;}
+.photo-frame img{width:100%;height:100%;object-fit:cover;}
+.rings-mid{display:flex;align-items:center;padding-top:55px;flex-shrink:0;}
+
+.fullnames{margin-top:20px;}
+.fullnames-ar{font-family:'Tajawal',sans-serif;font-size:19px;font-weight:300;color:#3a2e1e;line-height:1.8;}
+.fullnames-en{font-size:18px;font-style:italic;font-weight:300;color:#7a5535;margin-top:2px;}
+
+.msg-ar{font-family:'Tajawal',sans-serif;font-size:18px;font-weight:300;color:#3a2e1e;line-height:2.1;direction:rtl;text-align:center;background:#fffaf3;border-right:3px solid #c9a227;padding:18px 20px;margin-bottom:14px;}
+.msg-en{font-size:17px;font-style:italic;font-weight:300;color:#7a5535;line-height:2;text-align:center;background:#fffaf3;border-left:3px solid #e8c9a0;padding:18px 20px;}
+
+.detail-box{background:#fffaf3;border:1px solid #e8c9a0;padding:24px 20px;margin-top:14px;text-align:center;}
+.dl-ar{font-family:'Tajawal',sans-serif;font-size:12px;color:#c9a227;letter-spacing:1px;margin-bottom:5px;}
+.dl-en{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#c9a227;margin-bottom:8px;opacity:0.7;}
+.dv-ar{font-family:'Tajawal',sans-serif;font-size:22px;font-weight:400;color:#3a2e1e;margin-bottom:3px;}
+.dv-en{font-size:20px;font-style:italic;color:#3a2e1e;}
+.ds-ar{font-family:'Tajawal',sans-serif;font-size:14px;color:#9a7550;margin-top:5px;direction:rtl;}
+
+.venue-photo{width:100%;height:200px;object-fit:cover;border:1px solid #e8c9a0;margin-top:14px;display:block;}
+.maps-btn{display:inline-block;margin-top:14px;padding:11px 26px;border:1px solid #c9a227;color:#7a5535;font-size:12px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;font-family:'Cormorant Garamond',serif;background:#fffaf3;transition:background 0.2s;}
+.maps-btn:hover{background:#f5e8d8;}
+
+.timing-row{display:flex;gap:14px;margin-top:14px;direction:ltr;justify-content:center;}
+.timing-card{flex:1;max-width:200px;background:#fffaf3;border:1px solid #e8c9a0;padding:20px 10px;text-align:center;}
+.tl-ar{font-family:'Tajawal',sans-serif;font-size:13px;color:#9a7550;margin-bottom:3px;}
+.tl-en{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:#b08d2a;margin-bottom:8px;opacity:0.7;}
+.tv{font-size:24px;font-style:italic;color:#3a2e1e;}
+.tv-ar{font-family:'Tajawal',sans-serif;font-size:13px;color:#7a5535;margin-top:3px;}
+
+.rsvp-note-ar{font-family:'Tajawal',sans-serif;font-size:16px;color:#7a5535;line-height:1.9;margin-bottom:6px;direction:rtl;text-align:center;}
+.rsvp-note-en{font-size:14px;font-style:italic;color:#9a7550;margin-bottom:10px;text-align:center;}
+.rsvp-warning{font-family:'Tajawal',sans-serif;font-size:13px;color:#7a5535;background:#fffaf3;border:1px solid #e8c9a0;border-right:3px solid #c9a227;padding:14px 16px;margin:14px 0;direction:rtl;text-align:center;line-height:2;}
+.rsvp-btn{display:block;width:100%;background:#fdf6ee;border:1px solid #c9a227;color:#7a5535;padding:16px;font-size:20px;font-style:italic;cursor:pointer;font-family:'Cormorant Garamond',serif;font-weight:400;margin-top:16px;transition:background 0.2s;letter-spacing:1px;}
+.rsvp-btn:hover{background:#f5e8d8;}
+.rsvp-btn-ar{font-family:'Tajawal',sans-serif;font-size:15px;font-weight:300;font-style:normal;letter-spacing:0;display:block;margin-top:3px;color:#b08d2a;}
+
+.thanks-sub-ar{font-family:'Tajawal',sans-serif;font-size:24px;color:#3a2e1e;margin-top:10px;line-height:1.8;letter-spacing:2px;}
+.thanks-sub-en{font-size:15px;color:#b08d2a;font-style:italic;margin-top:5px;}
+
+.ending{padding:44px 32px 60px;text-align:center;background:#fffaf3;}
+.ending-with-ar{font-family:'Tajawal',sans-serif;font-size:14px;color:#9a7550;margin-bottom:5px;}
+.ending-with-en{font-size:13px;letter-spacing:2px;color:#9a7550;font-style:italic;margin-bottom:12px;}
+.ending-names-ar{font-family:'Tajawal',sans-serif;font-size:26px;font-weight:400;color:#3a2e1e;}
+.ending-names-en{font-size:28px;font-style:italic;font-weight:300;color:#3a2e1e;}
+.ending-amp{color:#c9a227;}
+
+.overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(60,40,10,0.5);z-index:600;align-items:center;justify-content:center;padding:20px;}
+.overlay.active{display:flex;}
+.modal{background:#fdf6ee;border:1px solid #e8c9a0;padding:32px 26px;width:100%;max-width:440px;position:relative;max-height:90vh;overflow-y:auto;}
+.modal-close{position:absolute;top:12px;right:14px;background:none;border:none;font-size:20px;color:#9a7550;cursor:pointer;font-family:serif;line-height:1;}
+.modal-title-ar{font-family:'Tajawal',sans-serif;font-size:20px;color:#3a2e1e;text-align:center;margin-bottom:2px;}
+.modal-title-en{font-size:15px;font-style:italic;color:#9a7550;text-align:center;margin-bottom:20px;}
+.mfield{margin-bottom:14px;}
+.mfield label{display:flex;justify-content:space-between;align-items:baseline;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#9a7550;margin-bottom:5px;flex-wrap:wrap;gap:2px;direction:ltr;}
+.mfield label .ar{font-family:'Tajawal',sans-serif;font-size:13px;letter-spacing:0;text-transform:none;direction:rtl;}
+.minput{width:100%;background:#fffaf3;border:1px solid #e8c9a0;color:#3a2e1e;padding:11px 14px;font-size:15px;font-family:'Cormorant Garamond',serif;outline:none;direction:ltr;}
+.minput:focus{border-color:#c9a227;}
+.minput::placeholder{color:#c8b080;font-style:italic;}
+textarea.minput{resize:none;direction:rtl;font-family:'Tajawal',sans-serif;font-size:14px;}
+.attend-opts{display:flex;gap:10px;margin-top:4px;direction:ltr;}
+.attend-opt{flex:1;border:1px solid #e8c9a0;padding:11px 6px;text-align:center;cursor:pointer;font-size:13px;color:#7a5535;background:#fffaf3;transition:all 0.15s;font-family:'Cormorant Garamond',serif;}
+.attend-opt.selected{border-color:#c9a227;background:#fdf0d8;color:#3a2e1e;}
+.attend-opt-ar{font-family:'Tajawal',sans-serif;display:block;font-size:13px;margin-bottom:2px;}
+.members-list{margin-top:6px;}
+.member-row{display:flex;gap:8px;align-items:center;margin-bottom:6px;direction:ltr;}
+.member-num{font-size:12px;color:#c9a227;width:18px;flex-shrink:0;font-style:italic;}
+.member-row .minput{flex:1;}
+.modal-note{font-family:'Tajawal',sans-serif;font-size:12px;color:#7a5535;background:#fffaf3;border:1px solid #e8c9a0;border-right:3px solid #c9a227;padding:10px 13px;margin:10px 0;direction:rtl;text-align:right;line-height:1.9;}
+.modal-submit{width:100%;background:#fdf6ee;border:1px solid #c9a227;color:#7a5535;padding:14px;font-size:18px;font-style:italic;cursor:pointer;font-family:'Cormorant Garamond',serif;font-weight:400;margin-top:16px;transition:background 0.2s;letter-spacing:1px;}
+.modal-submit:hover{background:#f5e8d8;}
+.modal-thanks{display:none;text-align:center;padding:24px 0;}
+.modal-thanks-icon{font-size:30px;color:#c9a227;margin-bottom:12px;}
+.modal-thanks h3{font-family:'Tajawal',sans-serif;font-size:22px;font-weight:300;color:#3a2e1e;margin-bottom:8px;}
+.modal-thanks p{font-family:'Tajawal',sans-serif;font-size:15px;color:#9a7550;line-height:1.8;}
+</style>
+</head>
+<body>
+
+<div class="petals-layer" id="petalsLayer"></div>
+
+<div class="cover-screen" id="coverScreen" onclick="openInvitation()">
+  <svg class="cover-rings" width="130" height="82" viewBox="0 0 130 82">
+    <circle cx="46" cy="41" r="32" fill="none" stroke="#e8c9a0" stroke-width="7"/>
+    <circle cx="84" cy="41" r="32" fill="none" stroke="#f5ddd0" stroke-width="7"/>
+    <circle cx="46" cy="41" r="32" fill="none" stroke="#c9a227" stroke-width="5" stroke-dasharray="0 201">
+      <animate attributeName="stroke-dasharray" from="0 201" to="201 0" dur="1.4s" fill="freeze"/>
+    </circle>
+    <circle cx="84" cy="41" r="32" fill="none" stroke="#e8b4c0" stroke-width="5" stroke-dasharray="0 201">
+      <animate attributeName="stroke-dasharray" from="0 201" to="201 0" dur="1.4s" begin="0.5s" fill="freeze"/>
+    </circle>
+  </svg>
+  <div class="cover-received-ar">لقد تلقيت دعوة من</div>
+  <div class="cover-received-en">You have received an invitation from</div>
+  <div class="cover-from-ar">محمد أشرف <span class="cover-amp">&amp;</span> تقى محمد</div>
+  <div class="cover-from-en">Mohamed Ashraf <span class="cover-amp">&amp;</span> Toka Mohamed</div>
+  <div class="cover-ornament">— ✦ —</div>
+  <div class="cover-tap">اضغط لفتح الدعوة · tap to open</div>
+</div>
+
+<div class="inv" id="invMain">
+
+  <div class="hero">
+    <div class="hero-bismillah">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+    <div class="hero-sublabel-ar">نتشرف بدعوتكم</div>
+    <div class="hero-sublabel-en">You are Cordially Invited</div>
+    <div class="hero-names-ar">محمد أشرف <span class="hero-amp">&amp;</span> تقى محمد</div>
+    <div class="hero-names-en">Mohamed <span class="hero-amp">&amp;</span> Toka</div>
+    <span class="hero-ornament">— ✦ —</span>
+  </div>
+
+  <div class="section">
+    <div class="gold-line"><div class="gold-bar"></div><div class="gold-diamond"></div><div class="gold-bar"></div></div>
+    <div class="intro-h-ar">خطوبتنا</div>
+    <div class="intro-h-en">We are getting engaged</div>
+    <div class="photos-row">
+      <div class="photo-card">
+        <div class="photo-name-ar">محمد</div>
+        <div class="photo-name-en">Mohamed</div>
+        <div class="photo-frame">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&q=80" alt="Groom">
+        </div>
+      </div>
+      <div class="rings-mid">
+        <svg width="34" height="34" viewBox="0 0 34 34">
+          <circle cx="10" cy="17" r="8" fill="none" stroke="#c9a227" stroke-width="2"/>
+          <circle cx="24" cy="17" r="8" fill="none" stroke="#e8b4c0" stroke-width="2"/>
+        </svg>
+      </div>
+      <div class="photo-card">
+        <div class="photo-name-ar">تقى</div>
+        <div class="photo-name-en">Toka</div>
+        <div class="photo-frame">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&q=80" alt="Bride">
+        </div>
+      </div>
+    </div>
+    <div class="fullnames">
+      <div class="fullnames-ar">محمد أشرف <span class="hero-amp">&amp;</span> تقى محمد</div>
+      <div class="fullnames-en">Mohamed Ashraf <span class="hero-amp">&amp;</span> Toka Mohamed</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-tag-ar">رسالة إلى ضيوفنا الأعزاء</div>
+    <div class="sec-tag-en">Message to our Dearest Guests</div>
+    <div class="gold-line"><div class="gold-bar"></div><div class="gold-diamond"></div><div class="gold-bar"></div></div>
+    <div class="msg-ar">نتشرف بدعوتكم لمشاركتنا فرحة خطوبتنا.<br>حضوركم يسعدنا ويكمل بهجة هذه المناسبة العزيزة.</div>
+    <div class="msg-en">We joyfully invite you to share in the celebration of our engagement.<br>Your presence would mean the world to us on this special day.</div>
+  </div>
+
+  <div class="section">
+    <div class="sec-tag-ar">تاريخ حفل الخطوبة</div>
+    <div class="sec-tag-en">Date of Engagement Party</div>
+    <div class="gold-line"><div class="gold-bar"></div><div class="gold-diamond"></div><div class="gold-bar"></div></div>
+    <div class="detail-box">
+      <div class="dl-ar">التاريخ</div>
+      <div class="dv-ar">الجمعة، ٥ يونيو ٢٠٢٦</div>
+      <div class="dl-en" style="margin-top:10px;">Date</div>
+      <div class="dv-en">Friday, June 5th, 2026</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-tag-ar">مكان الحفل</div>
+    <div class="sec-tag-en">Location</div>
+    <div class="gold-line"><div class="gold-bar"></div><div class="gold-diamond"></div><div class="gold-bar"></div></div>
+    <div class="detail-box">
+      <div class="dl-ar">القاعة</div>
+      <div class="dv-ar">قاعة لوزانو</div>
+      <div class="dv-en">Lozano Cuisine</div>
+      <div class="ds-ar" style="margin-top:8px;">نادي القوات المسلحة - كورنيش المعادي - فندق جويل بلازا</div>
+    </div>
+    <img class="venue-photo" src="https://scontent.fyzd1-3.fna.fbcdn.net/v/t39.30808-6/488833337_1200090328247626_970518307068454371_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=7b2446&_nc_ohc=b0CKONEzxwsQ7kNvwHHBqd-&_nc_oc=Ado9UvRG6FOH1Cw7wdVTcMgQgnK0Aa2wOiJ5IhUg8_057W0PjzEv04Lm-kIAn6xJa7Q&_nc_zt=23&_nc_ht=scontent.fyzd1-3.fna&_nc_gid=g_7CoQoOMZvbhxGLFy3c4g&_nc_ss=782a8&oh=00_Af6MjI1nu3T7LBmPC0f38lud_hFthgNeRPfhKsK4NcHGYA&oe=69FDF502" alt="Lozano Cuisine" onerror="this.src='https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=600&q=80'">
+    <a class="maps-btn" href="https://maps.app.goo.gl/JiJ5bijaouP97EiJ6" target="_blank">فتح الخريطة · Open in Maps</a>
+  </div>
+
+  <div class="section">
+    <div class="sec-tag-ar">مواعيد الحفل</div>
+    <div class="sec-tag-en">Party Timing</div>
+    <div class="gold-line"><div class="gold-bar"></div><div class="gold-diamond"></div><div class="gold-bar"></div></div>
+    <div class="timing-row">
+      <div class="timing-card">
+        <div class="tl-ar">بداية الحفل</div>
+        <div class="tl-en">Party Starts</div>
+        <div class="tv">7:00 PM</div>
+        <div class="tv-ar">٧:٠٠ مساءً</div>
+      </div>
+      <div class="timing-card">
+        <div class="tl-ar">نهاية الحفل</div>
+        <div class="tl-en">Party Ends</div>
+        <div class="tv">10:00 PM</div>
+        <div class="tv-ar">١٠:٠٠ مساءً</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-tag-ar">تأكيد الحضور</div>
+    <div class="sec-tag-en">RSVP</div>
+    <div class="gold-line"><div class="gold-bar"></div><div class="gold-diamond"></div><div class="gold-bar"></div></div>
+    <div class="rsvp-note-ar">يرجى تأكيد حضوركم مع الأسماء</div>
+    <div class="rsvp-note-en">Kindly confirm your attendance with full names</div>
+    <div class="rsvp-warning">
+      أسماء الحضور مطلوبة مسبقاً من قبل نادي القوات المسلحة حتى يتمكن الحضور من الدخول إلى قاعة الحفل
+      <br><br>
+      في حالة عدم إدراج الاسم الكامل لن يستطيع الحضور الدخول
+    </div>
+    <button class="rsvp-btn" onclick="openRSVP()">
+      تأكيد الحضور
+      <span class="rsvp-btn-ar">Confirm Attendance</span>
+    </button>
+  </div>
+
+  <div class="section">
+    <div class="sec-tag-ar">شكراً لكم</div>
+    <div class="sec-tag-en">Thank You</div>
+    <div class="gold-line"><div class="gold-bar"></div><div class="gold-diamond"></div><div class="gold-bar"></div></div>
+    <div class="thanks-sub-ar">يـسـعـدنـا أن نـحـتـفـل مـعـكـم</div>
+    <div class="thanks-sub-en">We can't wait to celebrate with you</div>
+  </div>
+
+  <div class="ending">
+    <div class="gold-line" style="margin-bottom:18px;"><div class="gold-bar"></div><div class="gold-diamond"></div><div class="gold-bar"></div></div>
+    <div class="ending-with-ar">بكل المحبة</div>
+    <div class="ending-with-en">With Love</div>
+    <div class="ending-names-ar">محمد أشرف <span class="ending-amp">&amp;</span> تقى محمد</div>
+    <div class="ending-names-en">Mohamed Ashraf <span class="ending-amp">&amp;</span> Toka Mohamed</div>
+  </div>
+
+  <div class="overlay" id="rsvpOverlay">
+    <div class="modal">
+      <button class="modal-close" onclick="closeRSVP()">✕</button>
+      <div id="modalForm">
+        <div class="modal-title-ar">تأكيد الحضور</div>
+        <div class="modal-title-en">Confirm Your Attendance</div>
+
+        <div class="mfield">
+          <label><span class="ar">هتنورنا فى الحفلة؟</span> <span>Will you attend?</span></label>
+          <div class="attend-opts">
+            <div class="attend-opt" id="opt-yes" onclick="selectAttend('yes')">
+              <span class="attend-opt-ar">نعم بكل تأكيد</span>Yes, with Joy
+            </div>
+            <div class="attend-opt" id="opt-no" onclick="selectAttend('no')">
+              <span class="attend-opt-ar">للأسف لا</span>No, sadly
+            </div>
+          </div>
+        </div>
+
+        <div class="mfield">
+          <label><span class="ar">الاسم الكامل</span> <span>Full name</span></label>
+          <input class="minput" type="text" id="guestName" placeholder="أدخل اسمك الكامل · Enter your full name" style="direction:rtl;font-family:'Tajawal',sans-serif;">
+        </div>
+
+        <div class="mfield">
+          <label><span class="ar">عدد الحاضرين (يشمل المدعو الأساسي)</span> <span>No. of attendees incl. you</span></label>
+          <input class="minput" type="number" id="memberCount" min="1" max="20" placeholder="e.g. 2" oninput="buildMembers()">
+        </div>
+
+        <div class="mfield" id="membersWrap" style="display:none;">
+          <label><span class="ar">أسماء الحاضرين (الاسم الكامل لكل فرد)</span> <span>Attendees' full names</span></label>
+          <div class="modal-note">أسماء الحضور مطلوبة من قبل نادي القوات المسلحة — حتى يتمكن الحضور من الدخول — في حالة عدم إدراج الاسم الكامل لن يستطيع الشخص الدخول</div>
+          <div class="members-list" id="membersList"></div>
+        </div>
+
+        <div class="mfield">
+          <label><span class="ar">رسالة لمحمد و تقى (اختياري)</span> <span>A note for Mohamed &amp; Toka (Optional)</span></label>
+          <textarea class="minput" id="guestNote" rows="3" placeholder="اكتب رسالتك هنا..."></textarea>
+        </div>
+
+        <button class="modal-submit" onclick="submitRSVP()">
+          إرسال التأكيد · Submit RSVP
+        </button>
+      </div>
+
+      <div class="modal-thanks" id="modalThanks">
+        <div class="modal-thanks-icon">✦</div>
+        <h3>شكراً لك!</h3>
+        <p id="thanksSummary"></p>
+        <p style="margin-top:8px;font-size:13px;font-style:italic;color:#b08d2a;">Thank you — we'll see you there!</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  var colors=['#e8c9a0','#f5ddd0','#f9f0e6','#ecdcc4','#fbeee0'];
+  var layer=document.getElementById('petalsLayer');
+  for(var i=0;i<22;i++){
+    var p=document.createElement('div');
+    p.className='petal';
+    var s=Math.random()*10+5;
+    p.style.cssText='width:'+s+'px;height:'+s+'px;left:'+Math.random()*100+'%;background:'+colors[Math.floor(Math.random()*colors.length)]+';animation-duration:'+(Math.random()*12+8)+'s;animation-delay:'+(Math.random()*12)+'s;border-radius:'+(Math.random()>0.5?'50% 0 50% 0':'0 50% 0 50%')+';';
+    layer.appendChild(p);
+  }
+})();
+
+function openInvitation(){
+  document.getElementById('coverScreen').classList.add('hidden');
+  document.getElementById('invMain').classList.add('visible');
+  var iframe=document.createElement('iframe');
+  iframe.style.cssText='position:fixed;bottom:-9999px;left:-9999px;width:1px;height:1px;border:none;pointer-events:none;';
+  iframe.src='https://www.youtube.com/embed/uhpdwhNDTjk?autoplay=1&loop=1&playlist=uhpdwhNDTjk&controls=0&mute=0';
+  iframe.allow='autoplay';
+  document.body.appendChild(iframe);
+}
+function openRSVP(){
+  var o=document.getElementById('rsvpOverlay');
+  o.style.display='flex';
+  o.classList.add('active');
+}
+function closeRSVP(){
+  var o=document.getElementById('rsvpOverlay');
+  o.style.display='none';
+  o.classList.remove('active');
+}
+var attendChoice='';
+function selectAttend(v){
+  attendChoice=v;
+  document.getElementById('opt-yes').classList.toggle('selected',v==='yes');
+  document.getElementById('opt-no').classList.toggle('selected',v==='no');
+}
+function buildMembers(){
+  var n=parseInt(document.getElementById('memberCount').value)||0;
+  var wrap=document.getElementById('membersWrap');
+  var list=document.getElementById('membersList');
+  if(n<1){wrap.style.display='none';return;}
+  wrap.style.display='block';
+  list.innerHTML='';
+  for(var i=1;i<=n;i++){
+    var row=document.createElement('div');
+    row.className='member-row';
+    row.innerHTML='<span class="member-num">'+i+'.</span><input type="text" class="minput" placeholder="الاسم الكامل · Full name '+i+'" style="flex:1;direction:rtl;font-family:Tajawal,sans-serif;font-size:14px;">';
+    list.appendChild(row);
+  }
+}
+function submitRSVP(){
+  if(!attendChoice){alert('يرجى اختيار الحضور أو الاعتذار · Please select attendance');return;}
+  var name=document.getElementById('guestName').value.trim();
+  if(!name){alert('يرجى إدخال اسمك الكامل · Please enter your full name');return;}
+
+  var attendVal = attendChoice==='yes' ? 'Yes, with Joy / نعم بكل تأكيد' : 'No, sadly / للأسف لا';
+  var count = document.getElementById('memberCount').value||'';
+  var inputs = document.querySelectorAll('#membersList input');
+  var names = Array.from(inputs).map(function(i){return i.value.trim();}).filter(Boolean).join('\n');
+  var note = document.getElementById('guestNote').value.trim();
+
+  var formUrl='https://docs.google.com/forms/d/e/1FAIpQLSfb-YPCdXCQbgFjg3cmcbotEzEAdZOdK2fbTEVzEJT69DwqsA/formResponse';
+  var params=new URLSearchParams();
+  params.append('entry.2051081951', attendVal);
+  params.append('entry.1341691338', name);
+  params.append('entry.85989169', count);
+  params.append('entry.1156743082', names);
+  params.append('entry.1217474749', note);
+
+  var iframe=document.createElement('iframe');
+  iframe.style.display='none';
+  iframe.name='hidden_iframe';
+  document.body.appendChild(iframe);
+
+  var form=document.createElement('form');
+  form.method='POST';
+  form.action=formUrl;
+  form.target='hidden_iframe';
+  params.forEach(function(val,key){
+    var input=document.createElement('input');
+    input.type='hidden';
+    input.name=key;
+    input.value=val;
+    form.appendChild(input);
+  });
+  document.body.appendChild(form);
+  form.submit();
+
+  var summary='';
+  if(attendChoice==='yes'){
+    summary='تم تسجيل حضور '+name+' — عدد الأفراد: '+(count||'1');
+    if(names) summary+='\n'+names.split('\n').join(' · ');
+  } else {
+    summary='تم تسجيل اعتذارك، شكراً '+name+'.';
+  }
+  document.getElementById('modalForm').style.display='none';
+  document.getElementById('modalThanks').style.display='block';
+  document.getElementById('thanksSummary').textContent=summary;
+}
+</script>
+</body>
+</html>
