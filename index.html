@@ -356,11 +356,7 @@ function openInvitation(){
   document.getElementById('coverScreen').classList.add('hidden');
   document.getElementById('invMain').classList.add('visible');
   window.scrollTo(0,0);
-  var iframe=document.createElement('iframe');
-  iframe.style.cssText='position:fixed;bottom:-9999px;left:-9999px;width:1px;height:1px;border:none;pointer-events:none;';
-  iframe.src='https://www.youtube.com/embed/uhpdwhNDTjk?autoplay=1&loop=1&playlist=uhpdwhNDTjk&controls=0&mute=0';
-  iframe.allow='autoplay';
-  document.body.appendChild(iframe);
+
 }
 function openRSVP(){
   var o=document.getElementById('rsvpOverlay');
