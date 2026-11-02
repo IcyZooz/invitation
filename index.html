@@ -55,11 +55,18 @@
     font-family:'Cairo','Poppins',sans-serif;font-size:.9rem;
   }
   .lang-btn:hover{background:var(--brown);color:var(--cream)}
-  @media(max-width:700px){.nav a{display:none}}
+  .order-btn{
+    display:inline-flex;align-items:center;gap:7px;text-decoration:none;
+    background:var(--pink);color:#fff;border:2px solid var(--pink);
+    border-radius:999px;padding:5px 16px;font-weight:600;font-size:.9rem;transition:.2s;
+  }
+  .order-btn svg{width:18px;height:18px}
+  .order-btn:hover{background:var(--pink-dark);border-color:var(--pink-dark)}
+  @media(max-width:700px){.nav > a:not(.order-btn){display:none}.nav{gap:8px}.order-btn{padding:5px 12px;font-size:.82rem}}
 
   /* hero */
   .hero{text-align:center;padding:24px 0 30px}
-  .hero img{display:block;width:100%;max-width:175px;height:auto;margin-inline-end:auto}
+  .hero img{display:block;width:100%;max-width:175px;height:auto;margin:0 auto}
   .hero h1{
     font-family:'Great Vibes',cursive;font-weight:400;color:var(--pink);
     font-size:clamp(2.8rem,7vw,5rem);line-height:1.15;margin-top:6px;
@@ -118,16 +125,15 @@
   }
 
   /* samples */
-  .samples{display:grid;grid-template-columns:repeat(3,1fr);gap:46px 40px}
-  @media(max-width:1000px){.samples{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:600px){.samples{grid-template-columns:1fr}}
+  .samples{display:grid;grid-template-columns:repeat(3,minmax(0,250px));justify-content:center;gap:46px clamp(24px,5vw,70px)}
+  @media(max-width:600px){.samples{grid-template-columns:minmax(0,250px)}}
   .sample{text-align:center;padding-top:44px}
-  .phone-wrap{position:relative;max-width:230px;margin:0 auto}
+  .phone-wrap{position:relative;width:100%;max-width:230px;margin:0 auto}
   .deco{position:absolute;z-index:5;pointer-events:none;filter:drop-shadow(0 2px 2px rgba(92,58,33,.22))}
   .deco svg{display:block;width:100%;height:auto}
-  .deco.tl{bottom:calc(100% - 30px);left:-24px;width:58px}
-  .deco.tr{bottom:calc(100% - 30px);right:-24px;width:58px}
-  .deco.tc{bottom:calc(100% - 6px);left:50%;transform:translateX(-50%);width:70px}
+  .deco.tl{bottom:calc(100% - 13%);left:-10%;width:25%}
+  .deco.tr{bottom:calc(100% - 13%);right:-10%;width:25%}
+  .deco.tc{bottom:calc(100% - 6px);left:50%;transform:translateX(-50%);width:30%}
 
   .deco-text{
     font-family:'Great Vibes',cursive;font-size:1.25rem;line-height:1;white-space:nowrap;
@@ -243,6 +249,11 @@
       <a href="#addons" data-en="Custom Add-ons" data-ar="إضافات خاصة">Custom Add-ons</a>
       <a href="#contact" data-en="Contact" data-ar="تواصل معنا">Contact</a>
       <button class="lang-btn" id="langBtn" type="button">العربية</button>
+      <!-- REPLACE: put your email after mailto: (same one as in the Contact section) -->
+      <a class="order-btn" href="mailto:your@email.com?subject=Invitation%20Order">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="m3 6.5 9 6.5 9-6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        <span data-en="Order Now" data-ar="اطلب الآن">Order Now</span>
+      </a>
     </nav>
   </div>
 </header>
@@ -262,10 +273,6 @@
         <a href="#addons" data-en="Custom Add-ons" data-ar="إضافات خاصة">Custom Add-ons</a>
         <a href="#contact" data-en="Contact Us" data-ar="تواصل معنا">Contact Us</a>
       </nav>
-      <div class="btns">
-        <a class="btn primary" href="#samples" data-en="View Samples" data-ar="شاهد النماذج">View Samples</a>
-        <a class="btn" href="#contact" data-en="Order Your Invitation" data-ar="اطلب دعوتك">Order Your Invitation</a>
-      </div>
     </div>
   </section>
 
@@ -438,16 +445,15 @@
   const samples = [
     {file:"weddings",      en:"Weddings",             ar:"حفلات الزفاف",            c:"#F08589", deco:{tl:ART.bowtie, tc:heart(P), tr:[ART.veil,74]}},
     {file:"engagements",   en:"Engagements",          ar:"الخطوبة",                 c:"#D9A441", deco:{tl:sparkle(G), tc:ART.rings, tr:sparkle(PE)}},
-    {file:"birthdays",     en:"Birthdays",            ar:"أعياد الميلاد",           c:"#F9B09A", deco:{tl:ART.balloon(P), tc:ART.cake, tr:ART.balloon(G)}},
-    {file:"baby-showers",  en:"Baby Showers",         ar:"استقبال المولود",         c:"#A97C53", deco:{tl:ART.rattle, tc:ART.onesie, tr:ART.bottle}},
-    {file:"graduations",   en:"Graduations",          ar:"حفلات التخرج",            c:"#D9646A", deco:{tl:[ART.gradcap,74,-14], tc:sparkle(G), tr:ART.diploma}},
-    {file:"bridal-shower", en:"Bridal Shower",        ar:"حفلة العروس",             c:"#F08589", deco:{tl:heart(PE), tc:[ART.crown,130], tr:heart(P)}},
-    {file:"gender-reveal", en:"Gender Reveal",        ar:"كشف نوع المولود",         c:"#D9A441", deco:{tl:ART.girlbow, tc:ART.question, tr:ART.boysym}},
-    {file:"anniversary",   en:"Anniversary",          ar:"ذكرى الزواج",             c:"#F9B09A", deco:{tl:heart(P), tc:ART.candles, tr:heart(PE)}},
     {file:"henna-night",   en:"Henna Night",          ar:"ليلة الحنة",              c:"#A97C53", deco:{tl:[ART.hand,58,-18], tc:sparkle(G), tr:[ART.hand,58,18,true]}},
+    {file:"anniversary",   en:"Anniversary",          ar:"ذكرى الزواج",             c:"#F9B09A", deco:{tl:heart(P), tc:ART.candles, tr:heart(PE)}},
+    {file:"bridal-shower", en:"Bridal Shower",        ar:"حفلة العروس",             c:"#F08589", deco:{tl:heart(PE), tc:[ART.crown,130], tr:heart(P)}},
+    {file:"birthdays",     en:"Birthdays",            ar:"أعياد الميلاد",           c:"#D9A441", deco:{tl:ART.balloon(P), tc:ART.cake, tr:ART.balloon(G)}},
+    {file:"baby-showers-aqiqa", en:"Baby Showers & Aqiqa / Sebou'", ar:"استقبال المولود والعقيقة / السبوع", c:"#A97C53", deco:{tl:ART.rattle, tc:[ART.cradle,84], tr:ART.bottle}},
+    {file:"gender-reveal", en:"Gender Reveal",        ar:"كشف نوع المولود",         c:"#F9B09A", deco:{tl:ART.girlbow, tc:ART.question, tr:ART.boysym}},
+    {file:"graduations",   en:"Graduations",          ar:"حفلات التخرج",            c:"#D9646A", deco:{tl:[ART.gradcap,74,-14], tc:sparkle(G), tr:ART.diploma}},
     {file:"eid-parties",   en:"Eid Parties",          ar:"حفلات العيد",             c:"#D9646A", deco:{tl:ART.star, tc:{text:["Eid Mubarak","عيد مبارك"]}, tr:ART.kaaba}},
     {file:"ramadan-iftar", en:"Ramadan Iftar",        ar:"عزومات إفطار رمضان",      c:"#F08589", deco:{tl:ART.crescent, tc:[ART.mosque,96], tr:ART.lantern}},
-    {file:"aqiqa-sebou",   en:"Aqiqa / Sebou'",       ar:"العقيقة / السبوع",        c:"#D9A441", deco:{tl:ART.star, tc:[ART.cradle,84], tr:ART.candle}},
     {file:"corporate",     en:"Corporate & Business", ar:"فعاليات الشركات والأعمال", c:"#A97C53", deco:{tl:ART.briefcase, tc:[ART.meeting,100], tr:ART.chart}}
   ];
 
@@ -457,7 +463,7 @@
     let svg=d, w="", rot=0, flip=false;
     if (Array.isArray(d)) [svg, w, rot=0, flip=false] = d;
     const tf = [pos==="tc" ? "translateX(-50%)" : "", rot ? `rotate(${rot}deg)` : "", flip ? "scaleX(-1)" : ""].join(" ").trim();
-    return `<div class="deco ${pos}" style="${w ? `width:${w}px;` : ""}${tf ? `transform:${tf};` : ""}">${svg}</div>`;
+    return `<div class="deco ${pos}" style="${w ? `width:${(w/230*100).toFixed(1)}%;` : ""}${tf ? `transform:${tf};` : ""}">${svg}</div>`;
   }
 
   const grid = document.getElementById("samplesGrid");
