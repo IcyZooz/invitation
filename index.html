@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joy Invitations</title>
+<meta name="description" content="Elegant digital invitations for every celebration — weddings, engagements, birthdays, baby showers and more.">
+<link rel="icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Cinzel+Decorative:wght@700&family=Great+Vibes&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF7EC;
+    --paper:#FFFDF7;
+    --pink:#F08589;
+    --pink-dark:#D9646A;
+    --peach:#F9B09A;
+    --brown:#A97C53;
+    --dark:#5C3A21;
+    --dot:#E2D3BC;
+    --gold:#D9A441;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Poppins',sans-serif;
+    color:var(--dark);
+    background:
+      radial-gradient(var(--dot) 2.5px, transparent 3px) 0 0/30px 30px,
+      linear-gradient(170deg,#FCE4E6 0%,var(--cream) 35%,#FBF0F3 65%,#FBE3D9 100%);
+    background-attachment:fixed;
+    line-height:1.6;
+  }
+  html[dir="rtl"] body{font-family:'Cairo',sans-serif}
+  a{color:inherit}
+  .wrap{width:100%;margin:0 auto;padding:0 16px}
+  @media(min-width:900px){.wrap{width:75%;padding:0}}
+
+  /* top bar */
+  .topbar{
+    position:sticky;top:0;z-index:10;
+    background:rgba(251,247,236,.92);
+    backdrop-filter:blur(6px);
+    border-bottom:2px dashed var(--peach);
+  }
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+  .brand{font-family:'Cinzel Decorative',serif;font-weight:700;color:var(--pink);font-size:1.05rem;text-decoration:none}
+  .nav{display:flex;gap:18px;align-items:center}
+  .nav a{text-decoration:none;font-size:.9rem;color:var(--brown)}
+  .nav a:hover{color:var(--pink)}
+  .lang-btn{
+    border:2px solid var(--brown);background:var(--paper);color:var(--brown);
+    border-radius:999px;padding:4px 14px;font-weight:600;cursor:pointer;
+    font-family:'Cairo','Poppins',sans-serif;font-size:.9rem;
+  }
+  .lang-btn:hover{background:var(--brown);color:var(--cream)}
+  @media(max-width:700px){.nav a{display:none}}
+
+  /* hero */
+  .hero{text-align:center;padding:40px 0 30px}
+  .hero img{width:100%;max-width:520px;height:auto}
+  .hero h1{
+    font-family:'Great Vibes',cursive;font-weight:400;color:var(--pink);
+    font-size:clamp(2.2rem,6vw,3.4rem);line-height:1.2;margin-top:10px;
+    text-shadow:1px 2px 0 rgba(169,124,83,.15);
+  }
+  html[dir="rtl"] .hero h1{font-family:'Cairo',sans-serif;font-weight:700;font-size:clamp(1.8rem,5vw,2.6rem)}
+  .hero p{color:var(--brown);max-width:560px;margin:10px auto 0}
+  .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+  .btn{
+    display:inline-block;text-decoration:none;font-weight:600;
+    padding:12px 26px;border-radius:999px;border:2px solid var(--brown);
+    background:var(--paper);color:var(--brown);transition:.2s;
+  }
+  .btn.primary{background:var(--pink);border-color:var(--pink);color:#fff}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(92,58,33,.15)}
+
+  /* section tabs (one row) */
+  .tabs{
+    display:flex;flex-wrap:nowrap;justify-content:center;gap:10px;
+    margin:22px auto 0;overflow-x:auto;padding:4px 2px 8px;
+    scrollbar-width:none;
+  }
+  .tabs::-webkit-scrollbar{display:none}
+  .tabs a{
+    flex:none;text-decoration:none;white-space:nowrap;
+    padding:8px 18px;border-radius:999px;
+    border:2px dashed var(--peach);background:var(--paper);
+    color:var(--brown);font-weight:600;font-size:.92rem;transition:.2s;
+  }
+  .tabs a:hover{background:var(--pink);border:2px solid var(--pink);color:#fff}
+  @media(max-width:600px){
+    .tabs{gap:5px}
+    .tabs a{padding:5px 8px;font-size:.7rem;border-width:1.5px}
+  }
+
+  /* sections */
+  section{padding:46px 0}
+  .title{text-align:center;margin-bottom:28px}
+  .title h2{
+    font-family:'Great Vibes',cursive;font-weight:400;color:var(--pink);
+    font-size:clamp(2.1rem,5vw,2.9rem);line-height:1.2;
+  }
+  html[dir="rtl"] .title h2{font-family:'Cairo',sans-serif;font-weight:700;font-size:clamp(1.6rem,4vw,2.2rem)}
+  .title p{color:var(--brown)}
+  .flourish{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:6px}
+  .flourish span{width:70px;border-top:3px dotted var(--brown)}
+  .flourish i{color:var(--pink);font-style:normal}
+
+  .panel{
+    background:rgba(255,253,247,.92);
+    border:3px solid var(--brown);border-radius:26px;
+    outline:2px dashed var(--peach);outline-offset:-11px;
+    padding:30px 22px;
+    box-shadow:0 10px 28px rgba(92,58,33,.10);
+  }
+
+  /* samples */
+  .samples{display:flex;flex-wrap:wrap;justify-content:center;gap:34px 46px}
+  .sample{text-align:center;flex:0 1 190px;padding-top:44px}
+  .phone-wrap{position:relative;max-width:190px;margin:0 auto}
+  .deco{position:absolute;z-index:5;pointer-events:none;filter:drop-shadow(0 2px 2px rgba(92,58,33,.22))}
+  .deco svg{display:block;width:100%;height:auto}
+  .deco.tl{bottom:calc(100% - 30px);left:-24px;width:58px}
+  .deco.tr{bottom:calc(100% - 30px);right:-24px;width:58px}
+  .deco.tc{bottom:calc(100% - 6px);left:50%;transform:translateX(-50%);width:70px}
+  @media(max-width:500px){
+    .samples{gap:34px 30px}
+    .deco.tl,.deco.tr{width:42px}
+    .deco.tl{left:-14px}
+    .deco.tr{right:-14px}
+    .deco.tc{width:56px}
+  }
+  .deco-text{
+    font-family:'Great Vibes',cursive;font-size:1.25rem;line-height:1;white-space:nowrap;
+    color:#fff;background:var(--gold);padding:6px 14px 7px;border-radius:999px;
+    border:2px solid var(--paper);box-shadow:0 0 0 2px var(--brown);
+  }
+  html[dir="rtl"] .deco-text{font-family:'Cairo',sans-serif;font-size:.85rem;font-weight:700}
+  @media(max-width:500px){.sample{flex-basis:calc(50% - 15px)}}
+  .phone{
+    --c:var(--pink);
+    position:relative;width:100%;margin:0 auto;
+    aspect-ratio:9/19;border-radius:32px;
+    border:6px solid var(--c);
+    background:var(--paper);
+    box-shadow:0 0 0 3px var(--paper),0 0 0 5px var(--brown),0 12px 24px rgba(92,58,33,.18);
+    overflow:hidden;
+  }
+  .phone::before{
+    content:"";position:absolute;top:8px;left:50%;transform:translateX(-50%);
+    width:56px;height:14px;border-radius:999px;background:var(--dark);z-index:3;
+  }
+  .phone video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;opacity:0;transition:opacity .4s}
+  .phone video.ready{opacity:1}
+  .placeholder{
+    position:absolute;inset:0;z-index:1;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+    padding:26px 14px;
+    background:radial-gradient(var(--dot) 2px, transparent 2.5px) 0 0/18px 18px,var(--cream);
+  }
+  .mini-card{
+    width:86%;background:var(--paper);border:2px solid var(--c);border-radius:12px;
+    padding:18px 8px;outline:1.5px dashed var(--peach);outline-offset:-6px;
+  }
+  .mini-card b{display:block;font-family:'Great Vibes',cursive;font-weight:400;font-size:clamp(1.05rem,4vw,1.3rem);color:var(--c);line-height:1.15}
+  html[dir="rtl"] .mini-card b{font-family:'Cairo',sans-serif;font-weight:700;font-size:1.1rem}
+  .mini-card small{display:block;color:var(--brown);font-size:.72rem;margin-top:6px}
+  .soon{font-size:.72rem;color:var(--brown);opacity:.8}
+  .tag{
+    display:inline-block;margin-top:14px;padding:5px 16px;border-radius:999px;
+    background:var(--c,var(--pink));color:#fff;font-weight:600;font-size:.88rem;
+  }
+
+  /* how it works */
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+  .step{text-align:center;padding:10px}
+  .num{
+    width:58px;height:58px;margin:0 auto 12px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--pink);color:#fff;font-weight:700;font-size:1.4rem;
+    border:3px solid var(--paper);box-shadow:0 0 0 3px var(--brown);
+  }
+  .step h3{color:var(--dark);font-size:1.1rem}
+  .step p{color:var(--brown);font-size:.95rem}
+
+  /* custom add-ons */
+  .addons{display:grid;grid-template-columns:1fr 1.4fr;gap:24px;align-items:stretch}
+  @media(max-width:860px){.addons{grid-template-columns:1fr}}
+  .addon{position:relative;padding-top:38px}
+  .addon h3{color:var(--dark);font-size:1.2rem;margin-bottom:6px}
+  .addon > p{color:var(--brown)}
+  .addon-num{
+    position:absolute;top:-22px;inset-inline-start:24px;
+    width:46px;height:46px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--pink);color:#fff;font-weight:700;font-size:1.2rem;
+    border:3px solid var(--paper);box-shadow:0 0 0 3px var(--brown);
+  }
+  .swatches{display:flex;gap:10px;margin:18px 0 16px;flex-wrap:wrap}
+  .swatches span{width:34px;height:34px;border-radius:50%;border:3px solid var(--paper);box-shadow:0 0 0 2px var(--brown)}
+  .fee{
+    display:inline-block;padding:6px 16px;border-radius:999px;
+    background:var(--cream);border:2px dashed var(--brown);color:var(--brown);font-weight:600;font-size:.9rem;
+  }
+  .rsvp{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center;margin-top:10px}
+  @media(max-width:600px){.rsvp{grid-template-columns:1fr}}
+  .rsvp ul{list-style:none;margin-top:12px}
+  .rsvp li{padding:6px 0;color:var(--brown)}
+  .rsvp li::before{content:"♥";color:var(--pink);margin-inline-end:10px}
+  .rsvp-demo{
+    background:var(--cream);border:2px solid var(--brown);border-radius:20px;padding:22px;
+    max-width:340px;margin:0 auto;width:100%;text-align:center;
+  }
+  .rsvp-demo h4{font-family:'Great Vibes',cursive;font-weight:400;color:var(--pink);font-size:2rem}
+  html[dir="rtl"] .rsvp-demo h4{font-family:'Cairo',sans-serif;font-weight:700;font-size:1.3rem}
+  .fake-input{background:var(--paper);border:1.5px solid var(--peach);border-radius:10px;padding:9px 12px;margin-top:10px;color:#b9a48e;font-size:.88rem;text-align:start}
+  .choice{display:flex;gap:10px;margin-top:12px}
+  .choice span{flex:1;padding:9px 6px;border-radius:999px;border:2px solid var(--pink);color:var(--pink);font-weight:600;font-size:.8rem;white-space:nowrap}
+  .choice span.on{background:var(--pink);color:#fff}
+
+  /* contact */
+  .contacts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+  .contact{
+    display:flex;align-items:center;gap:14px;text-decoration:none;
+    background:var(--cream);border:2px solid var(--brown);border-radius:18px;padding:16px;transition:.2s;
+  }
+  .contact:hover{transform:translateY(-3px);box-shadow:0 8px 18px rgba(92,58,33,.15)}
+  .contact svg{width:40px;height:40px;flex:none}
+  .contact b{display:block;color:var(--dark)}
+  .contact small{color:var(--brown);word-break:break-all}
+
+  footer{text-align:center;padding:30px 16px 40px;color:var(--brown);font-size:.85rem}
+  footer img{width:120px;height:auto;display:block;margin:0 auto 8px}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a href="#top" class="brand">Joy Invitations</a>
+    <nav class="nav">
+      <a href="#how" data-en="How it works" data-ar="طريقة الطلب">How it works</a>
+      <a href="#samples" data-en="Samples" data-ar="نماذج">Samples</a>
+      <a href="#addons" data-en="Custom Add-ons" data-ar="إضافات خاصة">Custom Add-ons</a>
+      <a href="#contact" data-en="Contact" data-ar="تواصل معنا">Contact</a>
+      <button class="lang-btn" id="langBtn" type="button">العربية</button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <img src="logo.png" alt="Joy Invitations logo">
+      <h1 data-en="Where every celebration begins" data-ar="كل احتفال يبدأ بدعوة جميلة">Where every celebration begins</h1>
+      <p data-en="Elegant digital invitations for all your happy moments — designed with love, delivered as one link you can share anywhere."
+         data-ar="دعوات رقمية أنيقة لكل مناسباتكم السعيدة — مصممة بحب، وتصلكم كرابط واحد تشاركونه في أي مكان.">Elegant digital invitations for all your happy moments — designed with love, delivered as one link you can share anywhere.</p>
+      <nav class="tabs" aria-label="Sections">
+        <a href="#how" data-en="How It Works" data-ar="طريقة الطلب">How It Works</a>
+        <a href="#samples" data-en="Samples" data-ar="النماذج">Samples</a>
+        <a href="#addons" data-en="Custom Add-ons" data-ar="إضافات خاصة">Custom Add-ons</a>
+        <a href="#contact" data-en="Contact Us" data-ar="تواصل معنا">Contact Us</a>
+      </nav>
+      <div class="btns">
+        <a class="btn primary" href="#samples" data-en="View Samples" data-ar="شاهد النماذج">View Samples</a>
+        <a class="btn" href="#contact" data-en="Order Your Invitation" data-ar="اطلب دعوتك">Order Your Invitation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how">
+    <div class="wrap">
+      <div class="title">
+        <h2 data-en="How It Works" data-ar="طريقة الطلب">How It Works</h2>
+        <div class="flourish"><span></span><i>♥</i><span></span></div>
+      </div>
+      <div class="panel">
+        <div class="steps">
+          <div class="step">
+            <div class="num">1</div>
+            <h3 data-en="Choose Your Design" data-ar="اختر التصميم">Choose Your Design</h3>
+            <p data-en="Browse our samples and pick the style you love." data-ar="تصفح النماذج واختر التصميم اللي يعجبك.">Browse our samples and pick the style you love.</p>
+          </div>
+          <div class="step">
+            <div class="num">2</div>
+            <h3 data-en="Send Your Details" data-ar="أرسل التفاصيل">Send Your Details</h3>
+            <p data-en="Names, date, time, location and photos — we take care of the rest." data-ar="الأسماء، التاريخ، الوقت، المكان والصور — والباقي علينا.">Names, date, time, location and photos — we take care of the rest.</p>
+          </div>
+          <div class="step">
+            <div class="num">3</div>
+            <h3 data-en="Receive Your Link" data-ar="استلم الرابط">Receive Your Link</h3>
+            <p data-en="Get your invitation link, ready to share on WhatsApp, Instagram or anywhere." data-ar="استلم رابط دعوتك جاهز للمشاركة على واتساب أو إنستجرام أو أي مكان.">Get your invitation link, ready to share on WhatsApp, Instagram or anywhere.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SAMPLES -->
+  <section id="samples">
+    <div class="wrap">
+      <div class="title">
+        <h2 data-en="Our Samples" data-ar="نماذج من أعمالنا">Our Samples</h2>
+        <div class="flourish"><span></span><i>♥</i><span></span></div>
+        <p data-en="An invitation for every occasion" data-ar="دعوة لكل مناسبة">An invitation for every occasion</p>
+      </div>
+      <div class="panel">
+        <div class="samples" id="samplesGrid"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CUSTOM ADD-ONS -->
+  <section id="addons">
+    <div class="wrap">
+      <div class="title">
+        <h2 data-en="Custom Add-ons" data-ar="إضافات خاصة">Custom Add-ons</h2>
+        <div class="flourish"><span></span><i>♥</i><span></span></div>
+        <p data-en="Make your invitation truly yours" data-ar="خلي دعوتك مميزة وتشبهك">Make your invitation truly yours</p>
+      </div>
+      <div class="addons">
+
+        <!-- 1. Custom designs & colors -->
+        <div class="panel addon">
+          <div class="addon-num">1</div>
+          <h3 data-en="Custom Designs & Colors" data-ar="تصميم وألوان حسب الطلب">Custom Designs & Colors</h3>
+          <p data-en="Want something unique? We can create a design made just for you — in your own colors, theme and style."
+             data-ar="عايز حاجة مختلفة؟ نقدر نعملك تصميم خاص بيك — بألوانك وفكرتك وستايلك.">Want something unique? We can create a design made just for you — in your own colors, theme and style.</p>
+          <div class="swatches" aria-hidden="true">
+            <span style="background:#F08589"></span><span style="background:#F9B09A"></span><span style="background:#D9A441"></span><span style="background:#A97C53"></span><span style="background:#8FB8DE"></span><span style="background:#B9D3B0"></span>
+          </div>
+          <div class="fee" data-en="Available for an additional fee" data-ar="متاح برسوم إضافية">Available for an additional fee</div>
+        </div>
+
+        <!-- 2. Guest replies (RSVP) -->
+        <div class="panel addon">
+          <div class="addon-num">2</div>
+          <h3 data-en="Guest Replies Made Easy" data-ar="تأكيد الحضور بسهولة">Guest Replies Made Easy</h3>
+          <p data-en="Your invitation can include an RSVP button, so guests confirm their attendance in seconds — and you see every reply in one place."
+             data-ar="ممكن دعوتك تحتوي على زر تأكيد الحضور، يأكد الضيوف حضورهم في ثواني — وتشوف كل الردود في مكان واحد.">Your invitation can include an RSVP button, so guests confirm their attendance in seconds — and you see every reply in one place.</p>
+          <div class="rsvp">
+            <ul>
+              <li data-en="Guests reply with one tap" data-ar="الضيوف يردوا بضغطة واحدة">Guests reply with one tap</li>
+              <li data-en="Know the number of guests attending" data-ar="اعرف عدد الحضور">Know the number of guests attending</li>
+              <li data-en="Receive their names and personal notes" data-ar="استلم أسماءهم ورسائلهم">Receive their names and personal notes</li>
+              <li data-en="All replies collected in one list" data-ar="كل الردود في قائمة واحدة">All replies collected in one list</li>
+            </ul>
+            <div class="rsvp-demo" aria-hidden="true">
+              <h4 data-en="Will you join us?" data-ar="هل ستشرفنا بالحضور؟">Will you join us?</h4>
+              <div class="fake-input" data-en="Your name" data-ar="اسمك">Your name</div>
+              <div class="fake-input" data-en="Number of guests" data-ar="عدد الضيوف">Number of guests</div>
+              <div class="choice">
+                <span class="on" data-en="Attending" data-ar="سأحضر">Attending</span>
+                <span data-en="Can't make it" data-ar="أعتذر">Can't make it</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="title">
+        <h2 data-en="Contact Us" data-ar="تواصل معنا">Contact Us</h2>
+        <div class="flourish"><span></span><i>♥</i><span></span></div>
+        <p data-en="Tell us about your occasion — we'd love to celebrate with you" data-ar="احكيلنا عن مناسبتك — يسعدنا نحتفل معاك">Tell us about your occasion — we'd love to celebrate with you</p>
+      </div>
+      <div class="panel">
+        <div class="contacts">
+          <!-- REPLACE: put your WhatsApp number after wa.me/ (country code, no + or spaces), e.g. https://wa.me/15551234567 -->
+          <a class="contact" href="https://wa.me/YOURNUMBER" target="_blank" rel="noopener">
+            <svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#F08589"/><path d="M20 9a11 11 0 0 0-9.5 16.5L9 31l5.7-1.5A11 11 0 1 0 20 9Zm0 2a9 9 0 1 1-4.6 16.7l-.3-.2-3.3.9.9-3.2-.2-.3A9 9 0 0 1 20 11Zm-3.8 4.6c-.3 0-.7.1-1 .5-.3.4-1.2 1.2-1.2 2.9s1.2 3.3 1.4 3.6c.2.2 2.4 3.7 5.8 5 2.8 1.1 3.4.9 4 .8.6-.1 2-.8 2.3-1.6.3-.8.3-1.5.2-1.6-.1-.1-.3-.2-.7-.4l-2.3-1.1c-.3-.1-.6-.2-.8.2l-1 1.3c-.2.2-.4.3-.8.1a7.4 7.4 0 0 1-3.7-3.2c-.3-.5.3-.4.8-1.4.1-.2 0-.4 0-.5l-1-2.5c-.3-.6-.5-.6-.8-.6h-.4Z" fill="#fff"/></svg>
+            <span><b>WhatsApp</b><small>+1 (000) 000-0000</small></span>
+          </a>
+          <!-- REPLACE: put your Instagram username after instagram.com/ -->
+          <a class="contact" href="https://instagram.com/YOUR_HANDLE" target="_blank" rel="noopener">
+            <svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#A97C53"/><rect x="11" y="11" width="18" height="18" rx="5.5" fill="none" stroke="#fff" stroke-width="2"/><circle cx="20" cy="20" r="4.3" fill="none" stroke="#fff" stroke-width="2"/><circle cx="25.2" cy="14.8" r="1.3" fill="#fff"/></svg>
+            <span><b>Instagram</b><small>@your_handle</small></span>
+          </a>
+          <!-- REPLACE: put your email after mailto: -->
+          <a class="contact" href="mailto:your@email.com">
+            <svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#F9B09A"/><rect x="10" y="13" width="20" height="14" rx="2" fill="none" stroke="#fff" stroke-width="2"/><path d="m10.5 14 9.5 7 9.5-7" fill="none" stroke="#fff" stroke-width="2"/></svg>
+            <span><b data-en="Email" data-ar="البريد الإلكتروني">Email</b><small>your@email.com</small></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <img src="logo.png" alt="">
+  <span>© 2026 Joy Invitations</span>
+</footer>
+
+<script>
+  /* ---------- decoration drawings (around each phone) ---------- */
+  const P="#F08589",PD="#D9646A",PE="#F9B09A",B="#A97C53",D="#5C3A21",G="#D9A441",C="#FBF7EC",W="#FFFFFF",BL="#8FB8DE";
+  const heart = c => `<svg viewBox="0 0 40 36"><path d="M20 34C8 25 2 18 2 11 2 5 7 1 12 1c4 0 7 2 8 5 1-3 4-5 8-5 5 0 10 4 10 10 0 7-6 14-18 23Z" fill="${c}"/></svg>`;
+  const sparkle = c => `<svg viewBox="0 0 40 40"><path d="M20 2 24 16 38 20 24 24 20 38 16 24 2 20 16 16Z" fill="${c}"/></svg>`;
+  const ART = {
+    bowtie:`<svg viewBox="0 0 64 40"><path d="M32 20 6 5Q1 20 6 35Z" fill="${D}"/><path d="M32 20 58 5Q63 20 58 35Z" fill="${D}"/><path d="M12 12Q10 20 12 28M52 12Q54 20 52 28" stroke="#7a5236" stroke-width="2" fill="none"/><rect x="26" y="13" width="12" height="14" rx="4" fill="#3f2716"/></svg>`,
+    veil:`<svg viewBox="0 0 70 96"><path d="M16 14Q35 2 54 14Q72 52 64 94Q36 80 8 94Q-2 52 16 14Z" fill="#fff" fill-opacity=".85" stroke="#E6D8C6" stroke-width="1.5"/><path d="M20 30Q22 60 16 86M35 22Q36 56 34 84M50 30Q50 60 56 86" stroke="#EFE5D8" stroke-width="1.5" fill="none"/><path d="M17 14Q35 1 53 14" fill="none" stroke="${G}" stroke-width="3.5" stroke-linecap="round"/><circle cx="35" cy="6" r="3.5" fill="${G}"/><circle cx="24" cy="9" r="2.5" fill="${PE}"/><circle cx="46" cy="9" r="2.5" fill="${PE}"/></svg>`,
+    rings:`<svg viewBox="0 0 80 56"><circle cx="31" cy="34" r="16" fill="none" stroke="${G}" stroke-width="5"/><circle cx="49" cy="34" r="16" fill="none" stroke="#E9C878" stroke-width="5"/><path d="M31 6 37 12 31 20 25 12Z" fill="#D7EEF7" stroke="#9EC6D6" stroke-width="1.5"/><path d="M25 12H37" stroke="#9EC6D6" stroke-width="1.2"/></svg>`,
+    cake:`<svg viewBox="0 0 64 64"><rect x="10" y="36" width="44" height="20" rx="4" fill="${PE}"/><rect x="15" y="22" width="34" height="16" rx="4" fill="${P}"/><path d="M15 28q4.25 5 8.5 0t8.5 0 8.5 0 8.5 0" fill="none" stroke="#fff" stroke-width="2.4"/><path d="M10 43q5.5 5 11 0t11 0 11 0 11 0" fill="none" stroke="#fff" stroke-width="2.4"/><rect x="5" y="55" width="54" height="5" rx="2.5" fill="${B}"/><rect x="30" y="10" width="4" height="12" rx="1" fill="${G}"/><path d="M32 1q5 6 0 9-5-3 0-9Z" fill="#F5A623"/></svg>`,
+    balloon: c => `<svg viewBox="0 0 34 60"><ellipse cx="17" cy="17" rx="13" ry="16" fill="${c}"/><ellipse cx="12" cy="11" rx="3" ry="5" fill="#fff" opacity=".45"/><path d="M15 33h4l-2 3Z" fill="${c}"/><path d="M17 36q-6 10 2 22" stroke="${B}" stroke-width="1.5" fill="none"/></svg>`,
+    onesie:`<svg viewBox="0 0 64 56"><path d="M20 6 8 15 15 27 22 23V50H42V23L49 27 56 15 44 6Q32 15 20 6Z" fill="${PE}" stroke="${B}" stroke-width="2" stroke-linejoin="round"/><circle cx="32" cy="32" r="5" fill="#fff"/><path d="M29 50q3 4 6 0" fill="none" stroke="${B}" stroke-width="2"/></svg>`,
+    bottle:`<svg viewBox="0 0 34 64"><path d="M12 15Q17 2 22 15Z" fill="${PE}"/><rect x="9" y="14" width="16" height="7" rx="2" fill="${P}"/><rect x="8" y="21" width="18" height="38" rx="6" fill="#fff" stroke="${B}" stroke-width="2"/><path d="M8 34h7M8 42h7M8 50h7" stroke="${P}" stroke-width="2"/></svg>`,
+    rattle:`<svg viewBox="0 0 40 60"><circle cx="20" cy="17" r="14" fill="${P}"/><circle cx="15" cy="12" r="3" fill="#fff" opacity=".6"/><rect x="17" y="30" width="6" height="20" rx="3" fill="${G}"/><circle cx="20" cy="53" r="6" fill="none" stroke="${G}" stroke-width="3"/></svg>`,
+    gradcap:`<svg viewBox="0 0 72 54"><path d="M36 6 70 20 36 34 2 20Z" fill="${D}"/><path d="M17 26V39Q36 49 55 39V26L36 34Z" fill="#3f2716"/><path d="M36 20 60 24V42" stroke="${G}" stroke-width="2.4" fill="none"/><path d="M57 42h6l-3 9Z" fill="${G}"/><circle cx="36" cy="20" r="2.6" fill="${G}"/></svg>`,
+    diploma:`<svg viewBox="0 0 64 34"><rect x="4" y="9" width="56" height="16" rx="8" fill="${C}" stroke="${B}" stroke-width="2"/><ellipse cx="56" cy="17" rx="4" ry="8" fill="#efe4d0" stroke="${B}" stroke-width="2"/><rect x="27" y="7" width="9" height="20" fill="${P}"/><path d="M31 27l-5 7M32 27l5 7" stroke="${P}" stroke-width="3"/></svg>`,
+    crown:`<svg viewBox="0 0 120 44"><path d="M6 38Q60-4 114 38" fill="none" stroke="${B}" stroke-width="3"/>${[[12,31,P],[26,20,PE],[42,13,P],[60,10,G],[78,13,P],[94,20,PE],[108,31,P]].map(([x,y,c])=>`<g transform="translate(${x} ${y})"><circle r="7" fill="${c}"/><circle r="2.6" fill="#fff"/><path d="M6 6q6 1 7 6-6 0-7-6Z" fill="#B9D3B0"/></g>`).join("")}</svg>`,
+    girlbow:`<svg viewBox="0 0 64 40"><path d="M32 20 6 4Q0 20 6 36Z" fill="${P}"/><path d="M32 20 58 4Q64 20 58 36Z" fill="${P}"/><path d="M12 10Q9 20 12 30M52 10Q55 20 52 30" stroke="#fff" stroke-width="2" fill="none" opacity=".6"/><circle cx="32" cy="20" r="7" fill="${PD}"/></svg>`,
+    boysym:`<svg viewBox="0 0 50 50"><circle cx="20" cy="30" r="13" fill="none" stroke="${BL}" stroke-width="5"/><path d="M29 21 44 6M32 6H44V18" stroke="${BL}" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+    question:`<svg viewBox="0 0 44 44"><circle cx="22" cy="22" r="20" fill="${G}" stroke="#fff" stroke-width="3"/><text x="22" y="30" text-anchor="middle" font-family="Georgia,serif" font-size="24" font-weight="700" fill="#fff">?</text></svg>`,
+    candles:`<svg viewBox="0 0 70 64"><rect x="14" y="22" width="9" height="38" rx="2" fill="${C}" stroke="${B}" stroke-width="1.5"/><rect x="30" y="14" width="10" height="46" rx="2" fill="${PE}" stroke="${B}" stroke-width="1.5"/><rect x="47" y="26" width="9" height="34" rx="2" fill="${C}" stroke="${B}" stroke-width="1.5"/><path d="M18.5 9q5 7 0 11-5-4 0-11ZM35 1q5.5 7 0 11.5-5.5-4.5 0-11.5ZM51.5 13q5 7 0 11-5-4 0-11Z" fill="#F5A623"/><rect x="8" y="59" width="54" height="4" rx="2" fill="${G}"/></svg>`,
+    hand:`<svg viewBox="0 0 52 72"><path d="M15 70V43L8 30Q5 23 11 23L17 33V11Q17 5 21.5 5T26 11V28L28 7Q28 2 32.5 2T37 7L35 29 39 12Q40 7 44 8T46 13L42 34 46 25Q49 20 51 24.5T48 36L42 52 40 70Z" fill="#F6DCC8" stroke="#C99A7A" stroke-width="1.5" stroke-linejoin="round"/><g fill="none" stroke="#7A4A28" stroke-width="1.6"><circle cx="28" cy="49" r="7"/><path d="M28 42v-4M28 56v4M21 49h-4M35 49h4"/><path d="M21 14h1M21 19h1M30.5 10h1M30.5 16h1M41.5 16h1M41.5 21h1" stroke-linecap="round" stroke-width="2.6"/><path d="M18 62q10-4 20 0"/></g><circle cx="28" cy="49" r="2.4" fill="#7A4A28"/></svg>`,
+    kaaba:`<svg viewBox="0 0 52 52"><path d="M8 18 26 26V49L8 41Z" fill="#1e1e1e"/><path d="M26 26 44 18V41L26 49Z" fill="#2e2e2e"/><path d="M8 18 26 10 44 18 26 26Z" fill="#3a3a3a"/><path d="M8 23 26 31 44 23V27L26 35 8 27Z" fill="${G}"/><rect x="31" y="34" width="6" height="9" fill="${G}" transform="skewY(-24)" transform-origin="31 34"/></svg>`,
+    star:`<svg viewBox="0 0 40 40"><path d="M20 2 25 15 39 15 28 24 32 38 20 30 8 38 12 24 1 15 15 15Z" fill="${G}"/></svg>`,
+    crescent:`<svg viewBox="0 0 56 56"><path d="M34 4A24 24 0 1 0 52 40 19 19 0 1 1 34 4Z" fill="${G}"/><path d="M44 10 46 16 52 16 47 20 49 26 44 22 39 26 41 20 36 16 42 16Z" fill="${G}"/></svg>`,
+    mosque:`<svg viewBox="0 0 96 56"><rect x="28" y="30" width="40" height="26" fill="${B}"/><path d="M29 31Q48 2 67 31Z" fill="${G}"/><path d="M48 6v-5" stroke="${G}" stroke-width="2"/><circle cx="48" cy="1.5" r="1.5" fill="${G}"/><rect x="11" y="16" width="9" height="40" fill="${B}"/><path d="M11 16 15.5 4 20 16Z" fill="${G}"/><rect x="76" y="16" width="9" height="40" fill="${B}"/><path d="M76 16 80.5 4 85 16Z" fill="${G}"/><path d="M42 56V45Q48 37 54 45V56Z" fill="${D}"/></svg>`,
+    lantern:`<svg viewBox="0 0 34 60"><path d="M17 1v7" stroke="${B}" stroke-width="2"/><path d="M9 9H25L21 16H13Z" fill="${G}"/><path d="M11 16H23L28 36 17 47 6 36Z" fill="${PE}" stroke="${G}" stroke-width="2.4"/><path d="M17 16V47M11 26H23" stroke="${G}" stroke-width="1.5"/><path d="M14 47H20L17 57Z" fill="${G}"/></svg>`,
+    cradle:`<svg viewBox="0 0 76 56"><path d="M8 22Q38 58 68 22Z" fill="${PE}" stroke="${B}" stroke-width="2"/><path d="M8 22Q8 6 26 6Q22 14 24 22" fill="${P}" stroke="${B}" stroke-width="2"/><path d="M20 44 12 54M56 44 64 54M8 54H68" stroke="${B}" stroke-width="3" stroke-linecap="round" fill="none"/><circle cx="42" cy="22" r="6" fill="#F6DCC8"/></svg>`,
+    candle:`<svg viewBox="0 0 34 64"><rect x="9" y="18" width="16" height="42" rx="3" fill="${C}" stroke="${B}" stroke-width="1.5"/><path d="M9 28h16M9 40h16" stroke="${P}" stroke-width="3"/><circle cx="17" cy="34" r="3" fill="${G}"/><path d="M17 3q6 7 0 12-6-5 0-12Z" fill="#F5A623"/><path d="M5 60h24" stroke="${G}" stroke-width="4" stroke-linecap="round"/></svg>`,
+    meeting:`<svg viewBox="0 0 96 56"><circle cx="20" cy="14" r="7" fill="#E8C3A3"/><path d="M8 38Q8 24 20 24T32 38Z" fill="${B}"/><circle cx="48" cy="9" r="7" fill="#C99A7A"/><path d="M36 33Q36 19 48 19T60 33Z" fill="${D}"/><circle cx="76" cy="14" r="7" fill="#E8C3A3"/><path d="M64 38Q64 24 76 24T88 38Z" fill="${P}"/><rect x="2" y="36" width="92" height="9" rx="3" fill="${G}"/><path d="M12 45v10M84 45v10" stroke="${B}" stroke-width="3"/><rect x="41" y="29" width="14" height="8" rx="1" fill="#fff" stroke="${B}"/></svg>`,
+    briefcase:`<svg viewBox="0 0 54 44"><path d="M19 12V6h16v6" fill="none" stroke="${D}" stroke-width="3.5" stroke-linejoin="round"/><rect x="3" y="12" width="48" height="29" rx="5" fill="${B}"/><rect x="3" y="21" width="48" height="4" fill="${D}"/><rect x="23" y="19" width="8" height="8" rx="1.5" fill="${G}"/></svg>`,
+    chart:`<svg viewBox="0 0 48 44"><rect x="2" y="2" width="44" height="40" rx="5" fill="#fff" stroke="${B}" stroke-width="2"/><rect x="10" y="24" width="6" height="12" fill="${PE}"/><rect x="21" y="16" width="6" height="20" fill="${P}"/><rect x="32" y="9" width="6" height="27" fill="${G}"/></svg>`
+  };
+
+  /* Each sample: put videos in a "videos" folder in the repo, e.g. videos/weddings.mp4
+     Until a video is uploaded, a placeholder card is shown. */
+  const samples = [
+    {file:"weddings",      en:"Weddings",             ar:"حفلات الزفاف",            c:"#F08589", deco:{tl:ART.bowtie, tc:heart(P), tr:[ART.veil,74]}},
+    {file:"engagements",   en:"Engagements",          ar:"الخطوبة",                 c:"#D9A441", deco:{tl:sparkle(G), tc:ART.rings, tr:sparkle(PE)}},
+    {file:"birthdays",     en:"Birthdays",            ar:"أعياد الميلاد",           c:"#F9B09A", deco:{tl:ART.balloon(P), tc:ART.cake, tr:ART.balloon(G)}},
+    {file:"baby-showers",  en:"Baby Showers",         ar:"استقبال المولود",         c:"#A97C53", deco:{tl:ART.rattle, tc:ART.onesie, tr:ART.bottle}},
+    {file:"graduations",   en:"Graduations",          ar:"حفلات التخرج",            c:"#D9646A", deco:{tl:[ART.gradcap,74,-14], tc:sparkle(G), tr:ART.diploma}},
+    {file:"bridal-shower", en:"Bridal Shower",        ar:"حفلة العروس",             c:"#F08589", deco:{tl:heart(PE), tc:[ART.crown,130], tr:heart(P)}},
+    {file:"gender-reveal", en:"Gender Reveal",        ar:"كشف نوع المولود",         c:"#D9A441", deco:{tl:ART.girlbow, tc:ART.question, tr:ART.boysym}},
+    {file:"anniversary",   en:"Anniversary",          ar:"ذكرى الزواج",             c:"#F9B09A", deco:{tl:heart(P), tc:ART.candles, tr:heart(PE)}},
+    {file:"henna-night",   en:"Henna Night",          ar:"ليلة الحنة",              c:"#A97C53", deco:{tl:[ART.hand,58,-18], tc:sparkle(G), tr:[ART.hand,58,18,true]}},
+    {file:"eid-parties",   en:"Eid Parties",          ar:"حفلات العيد",             c:"#D9646A", deco:{tl:ART.star, tc:{text:["Eid Mubarak","عيد مبارك"]}, tr:ART.kaaba}},
+    {file:"ramadan-iftar", en:"Ramadan Iftar",        ar:"عزومات إفطار رمضان",      c:"#F08589", deco:{tl:ART.crescent, tc:[ART.mosque,96], tr:ART.lantern}},
+    {file:"aqiqa-sebou",   en:"Aqiqa / Sebou'",       ar:"العقيقة / السبوع",        c:"#D9A441", deco:{tl:ART.star, tc:[ART.cradle,84], tr:ART.candle}},
+    {file:"corporate",     en:"Corporate & Business", ar:"فعاليات الشركات والأعمال", c:"#A97C53", deco:{tl:ART.briefcase, tc:[ART.meeting,100], tr:ART.chart}}
+  ];
+
+  function decoHTML(pos, d){
+    if (!d) return "";
+    if (d.text) return `<div class="deco ${pos}" style="width:auto"><span class="deco-text" data-en="${d.text[0]}" data-ar="${d.text[1]}">${d.text[0]}</span></div>`;
+    let svg=d, w="", rot=0, flip=false;
+    if (Array.isArray(d)) [svg, w, rot=0, flip=false] = d;
+    const tf = [pos==="tc" ? "translateX(-50%)" : "", rot ? `rotate(${rot}deg)` : "", flip ? "scaleX(-1)" : ""].join(" ").trim();
+    return `<div class="deco ${pos}" style="${w ? `width:${w}px;` : ""}${tf ? `transform:${tf};` : ""}">${svg}</div>`;
+  }
+
+  const grid = document.getElementById("samplesGrid");
+  samples.forEach(s => {
+    const el = document.createElement("div");
+    el.className = "sample";
+    el.innerHTML = `
+      <div class="phone-wrap">
+        ${decoHTML("tl", s.deco.tl)}${decoHTML("tc", s.deco.tc)}${decoHTML("tr", s.deco.tr)}
+        <div class="phone" style="--c:${s.c}">
+          <div class="placeholder">
+            <div class="mini-card">
+              <b data-en="${s.en}" data-ar="${s.ar}">${s.en}</b>
+              <small data-en="You're invited" data-ar="أنتم مدعوون">You're invited</small>
+            </div>
+            <span class="soon" data-en="Sample video coming soon" data-ar="فيديو النموذج قريباً">Sample video coming soon</span>
+          </div>
+          <video muted loop playsinline preload="metadata">
+            <source src="videos/${s.file}.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <span class="tag" style="--c:${s.c}" data-en="${s.en}" data-ar="${s.ar}">${s.en}</span>`;
+    const video = el.querySelector("video");
+    const source = el.querySelector("source");
+    video.addEventListener("loadeddata", () => video.classList.add("ready"));
+    source.addEventListener("error", () => video.remove());
+    grid.appendChild(el);
+  });
+
+  /* play videos only when visible (saves data on phones) */
+  const io = "IntersectionObserver" in window ? new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      const v = e.target;
+      if (e.isIntersecting) { v.play().catch(()=>{}); } else { v.pause(); }
+    });
+  }, {threshold:.3}) : null;
+  document.querySelectorAll(".phone video").forEach(v => io ? io.observe(v) : v.setAttribute("autoplay",""));
+
+  /* EN / AR toggle */
+  const btn = document.getElementById("langBtn");
+  let lang = "en";
+  function setLang(l){
+    lang = l;
+    document.documentElement.lang = l;
+    document.documentElement.dir = l === "ar" ? "rtl" : "ltr";
+    document.querySelectorAll("[data-en]").forEach(el => { el.textContent = el.dataset[l]; });
+    btn.textContent = l === "ar" ? "English" : "العربية";
+  }
+  btn.addEventListener("click", () => setLang(lang === "en" ? "ar" : "en"));
+</script>
+</body>
+</html>
